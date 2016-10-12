@@ -1,36 +1,45 @@
 'use strict'
 const gcloud = require('gcloud')
 
+const PROJECT_ID = "cloud-vision-experiments-ykro"
+
 const vision = gcloud.vision({
-    projectId: 'api-project-875963551142',
-    keyFilename: 'keyfile.json'
+    projectId: PROJECT_ID,
+    keyFilename: PROJECT_ID + "-keyfile.json"
 })
 
-vision.detectFaces('images/image.jpg', function(err, faces) {
+vision.detectFaces('images/image.jpg', (err, faces) => {
+    if (err) {
+	console.log(err)
+	return
+    }
+    
     if (faces.length > 0) {
 	faces.forEach(function(face) {
 	    if (face.confidence > 0.6) {
-		console.log(face);
-		console.log(faceToEmoji(face));
+		console.log(face)
+		console.log(faceToEmoji(face))
 	    }
-	});
+	})
+    } else {
+	console.log('no faces')
     }
-});
+})
 
 function faceToEmoji(face) {
-    var emoji = ":|";
+    var emoji = ":|"
     if (face.happy) {
-	emoji = ":)";
+	emoji = ":)"
     } else if (face.mad) {
-	emoji =":@";
+	emoji =":@"
     } else if (face.sad) {
-	emoji =":(";
+	emoji =":("
     } else if (face.surprised) {
-	emoji =":O";
+	emoji =":O"
     }
 
     if (face.hat) {
-	emoji = "0" + emoji;
+	emoji = "0" + emoji
     }
-    return emoji;
+    return emoji
 }

@@ -3,7 +3,6 @@
 *.jpg
 node_modules/
 images/
-keyfile.json
 cloud-vision-experiments-ykro-keyfile.json
 
 
