@@ -1,7 +1,7 @@
 'use strict'
 
 const fs = require('fs'),
-      gcloud = require('gcloud')
+      gcloud = require('google-cloud')
 const raspi = require('raspi-io')
 const five = require('johnny-five')
 const firebase = require('firebase')

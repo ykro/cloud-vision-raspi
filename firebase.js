@@ -1,6 +1,6 @@
 'use strict'
 const firebase = require('firebase')
-const gcloud = require('gcloud')
+const gcloud = require('google-cloud')
 const PROJECT_ID = "cloud-vision-experiments-ykro"
 
 const config = {
